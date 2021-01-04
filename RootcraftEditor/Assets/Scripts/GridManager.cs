@@ -89,15 +89,6 @@ public class GridManager : MonoBehaviour
             Vector3 position = new Vector3(1f, 0f, 0f);
             Vector3 a = new Vector3(-0.4f, 0f, 0f);
             ScaleGridX(scaleFactor, position,a);
-            //for (int i = 0; i < circles.Count; i++)
-            //{
-            //    int countt = 1;
-            //    for (int j = circles[0].Count - 1; j >= 0; j--)
-            //    {
-            //        circles[i][j].transform.position += a * countt;
-            //        countt++;
-            //    }
-            //}
         }
         if (right)
         {
@@ -116,19 +107,9 @@ public class GridManager : MonoBehaviour
             Vector3 position = new Vector3(-1f, 0f, 0f);
             Vector3 a = new Vector3(0.4f, 0f, 0f);
             ScaleGridX(scaleFactor, position, a);
-            //for (int i = 0; i < circles.Count; i++)
-            //{
-            //    int countt = 1;
-            //    for (int j = circles[0].Count - 1; j >= 0 ; j--)
-            //    {
-            //        circles[i][j].transform.position += a*countt;
-            //        countt++;
-            //    }
-            //}
         }
     }
     
-    // Update is called once per frame
     public void ScaleGridY(Vector3 scaleFactor, Vector3 position, Vector3 pos)
     {
         for(int i = 0; i < circles.Count; i++)
@@ -163,44 +144,17 @@ public class GridManager : MonoBehaviour
         {
             for (int j = 0; j < column; j++)
             {
-                if(column%2 != 0)
-                {
-                    if(j < (column/2 ))
-                    {
-                        circles[i][j].transform.position += pos;
-                    }
-                    else if(j == column / 2)
-                    {
+                circles[i][j].transform.position += pos;
+            }
 
-                    }
-                    else
-                    {
-                        circles[i][j].transform.position -= pos;
-                    }
-                }
-                else
-                {
-                    if (j < (column / 2))
-                    {
-                        circles[i][j].transform.position += pos;
-                    }
-                    else if(j == (column / 2))
-                    {
-                        circles[i][j].transform.position += pos/2;
-                    }
-                    else if(j == (column / 2) + 1)
-                    {
-                        circles[i][j].transform.position -= pos/2;
-                    }
-                    else
-                    {
-                        circles[i][j].transform.position -= pos;
-                    }
-                }
-                
+        }
+        for (int i = 0; i < circles.Count; i++)
+        {
+            for (int j = 1; j < circles[0].Count; j++)
+            {
+                circles[i][j].transform.position -= new Vector3(0.15f,0f,0f) * j;
             }
         }
-
     }
     private class GridData
     {
